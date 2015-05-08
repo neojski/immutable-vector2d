@@ -83,6 +83,10 @@ Vector.prototype.angleDeg = function () {
   return radian2degrees(this.angle());
 };
 
+Vector.prototype.slope = function () {
+  return this.y / this.x;
+};
+
 Vector.prototype.toString = function () {
   return 'x:' + this.x + ', y:' + this.y;
 };

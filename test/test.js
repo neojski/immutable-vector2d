@@ -174,6 +174,11 @@ describe('chainable instance methods', function () {
     check(Vector(-1, -1), 225);
     check(Vector( 1, -1), 315);
   });
+
+  it('should calculate the slope', function () {
+    var res = vec1.slope();
+    expect(res).to.deep.equal(3);
+  });
 });
 
 describe('utility methods', function () {
