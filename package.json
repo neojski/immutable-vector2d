@@ -1,0 +1,9 @@
+{
+  "name": "immutable-vector2d",
+  "version": "0.0.1",
+  "main": "index.js",
+  "description": "Vector library based on https://github.com/maxkueng/victor but with immutable vectors",
+  "devDependencies": {
+    "chai": "^2.3.0"
+  }
+}
