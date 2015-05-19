@@ -179,6 +179,16 @@ describe('chainable instance methods', function () {
     var res = vec1.slope();
     expect(res).to.deep.equal(3);
   });
+
+  it('should mix (blend) two vectors equally', function () {
+    var res = vec1.mix(vec2);
+    expect(res).to.deep.equal(new Vector(2.5, 5));
+  });
+
+  it('should mix (blend) two vectors by a given amount', function () {
+    var res = vec1.mix(vec2, 0.75);
+    expect(res).to.deep.equal(new Vector(2.75, 4.5));
+  });
 });
 
 describe('utility methods', function () {

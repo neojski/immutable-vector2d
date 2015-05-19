@@ -3,6 +3,19 @@
   "version": "0.0.2",
   "main": "index.js",
   "description": "Vector library based on https://github.com/maxkueng/victor but with immutable vectors",
+  "keywords": [
+    "vector",
+    "coordinates",
+    "immutable"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/neojski/immutable-vector2d"
+  },
+  "bugs": {
+    "url": "https://github.com/neojski/immutable-vector2d/issues"
+  },
+  "homepage": "https://github.com/neojski/immutable-vector2d",
   "devDependencies": {
     "chai": "^2.3.0",
     "mocha": "^2.2.4"

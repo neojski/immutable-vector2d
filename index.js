@@ -63,6 +63,13 @@ Vector.prototype.normalize = function () {
   return this.divide(length);
 };
 
+Vector.prototype.mix = function(vec, amount) {
+  amount = amount || 0.5;
+  var x = (1 - amount) * this.x + amount * vec.x;
+  var y = (1 - amount) * this.y + amount * vec.y;
+  return new Vector(x, y);
+};
+
 Vector.prototype.clone = function () {
   return new Vector(this.x, this.y);
 };
