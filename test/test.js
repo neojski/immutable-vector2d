@@ -118,7 +118,7 @@ describe('chainable instance methods', function () {
 
   it('should normalize length of a vector', function () {
     var vec3 = vec1.normalize();
-    expect(vec3.length()).to.be.within(1 - EPSILON, 1);
+    expect(vec3.length()).to.be.within(1 - EPSILON, 1 + EPSILON);
   });
 
   it('should throw when normalizing zero vector', function () {
@@ -193,6 +193,11 @@ describe('chainable instance methods', function () {
   it('should calculate a perpendicular vector', function () {
     var res = vec1.perpendicular();
     expect(res).to.deep.equal(new Vector(-6, 2));
+  });
+
+  it('should be perpendicular', function () {
+    var res = vec1.dot(vec1.perpendicular());
+    expect(res).to.deep.equal(0);
   });
 });
 
