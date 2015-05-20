@@ -189,6 +189,11 @@ describe('chainable instance methods', function () {
     var res = vec1.mix(vec2, 0.75);
     expect(res).to.deep.equal(new Vector(2.75, 4.5));
   });
+
+  it('should calculate a perpendicular vector', function () {
+    var res = vec1.perpendicular();
+    expect(res).to.deep.equal(new Vector(-6, 2));
+  });
 });
 
 describe('utility methods', function () {

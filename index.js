@@ -63,11 +63,15 @@ Vector.prototype.normalize = function () {
   return this.divide(length);
 };
 
-Vector.prototype.mix = function(vec, amount) {
+Vector.prototype.mix = function (vec, amount) {
   amount = amount || 0.5;
   var x = (1 - amount) * this.x + amount * vec.x;
   var y = (1 - amount) * this.y + amount * vec.y;
   return new Vector(x, y);
+};
+
+Vector.prototype.perpendicular = function () {
+  return new Vector(-this.y, this.x); // this is 90 degrees counter-clockwise
 };
 
 Vector.prototype.clone = function () {
