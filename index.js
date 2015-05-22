@@ -74,6 +74,13 @@ Vector.prototype.perpendicular = function () {
   return new Vector(-this.y, this.x); // this is 90 degrees counter-clockwise
 };
 
+Vector.prototype.snap = function (snapTo) {
+  var snap = function(val) {
+    return Math.round(val / snapTo) * snapTo;
+  };
+  return new Vector(snap(this.x), snap(this.y));
+}
+
 Vector.prototype.clone = function () {
   return new Vector(this.x, this.y);
 };
