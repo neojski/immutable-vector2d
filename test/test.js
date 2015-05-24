@@ -199,6 +199,16 @@ describe('chainable instance methods', function () {
     var res = vec1.dot(vec1.perpendicular());
     expect(res).to.deep.equal(0);
   });
+
+  it('should snap to the nearest multiple of a given value', function () {
+    var res = vec1.snap(5);
+    expect(res).to.deep.equal(new Vector(0, 5));
+  });
+
+  it('should snap negative vectors to the nearest multiple of a given value', function () {
+    var res = new Vector(-2, -6).snap(5);
+    expect(res).to.deep.equal(new Vector(-0, -5));
+  });
 });
 
 describe('utility methods', function () {
