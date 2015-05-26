@@ -81,6 +81,18 @@ Vector.prototype.snap = function (snapTo) {
   return new Vector(snap(this.x), snap(this.y));
 }
 
+/**
+ * Expand this vector to a given minimum length in the same direction as the original.
+ *
+ * Not valid on zero-length vectors.
+ *
+ * @param  {number} scalar Minimum length
+ * @return {Vector}
+ */
+Vector.prototype.minLength = function (scalar) {
+  return this.length() < scalar ? this.normalize().multiply(scalar) : this;
+}
+
 Vector.prototype.clone = function () {
   return new Vector(this.x, this.y);
 };
