@@ -117,6 +117,10 @@ Vector.prototype.toObject = function () {
   return { x: this.x, y: this.y };
 };
 
+Vector.prototype.equals = function (vec) {
+  return this.x === vec.x && this.y === vec.y;
+}
+
 var degrees = 180 / Math.PI;
 
 function radian2degrees (rad) {

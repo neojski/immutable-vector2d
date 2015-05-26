@@ -234,4 +234,16 @@ describe('utility methods', function () {
     expect(ret).to.be.instanceof(Object);
     expect(ret).to.eql({ x: 100, y: 200 });
   });
+
+  it('should compare two equal objects', function () {
+    var vec1 = new Vector(1, 2);
+    var vec2 = new Vector(1, 2);
+    expect(vec1.equals(vec2)).to.be.true;
+  });
+
+  it('should compare two non-equal objects', function () {
+    var vec1 = new Vector(1, 2);
+    var vec2 = new Vector(2, 1);
+    expect(vec1.equals(vec2)).to.be.false;
+  });
 });
