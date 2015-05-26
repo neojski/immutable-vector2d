@@ -121,6 +121,11 @@ describe('chainable instance methods', function () {
     expect(vec3.length()).to.be.within(1 - EPSILON, 1 + EPSILON);
   });
 
+  it('should normalize a vector to a given length', function () {
+    var vec3 = vec1.normalize(5);
+    expect(vec3.length()).to.be.within(5 - EPSILON, 5 + EPSILON);
+  });
+
   it('should throw when normalizing zero vector', function () {
     expect(function () {
       var vec3 = Vector(0, 0).normalize();
