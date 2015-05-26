@@ -209,6 +209,22 @@ describe('chainable instance methods', function () {
     var res = new Vector(-2, -6).snap(5);
     expect(res).to.deep.equal(new Vector(-0, -5));
   });
+
+  it('should expand vectors that are too short', function () {
+    var res = new Vector(1, 0).minLength(5);
+    expect(res).to.deep.equal(new Vector(5, 0));
+  });
+
+  it('should only expand vectors that are too short', function () {
+    var res = new Vector(10, 0).minLength(5);
+    expect(res).to.deep.equal(new Vector(10, 0));
+  });
+
+  it('should throw when expanding a zero-length vector', function () {
+    expect(function () {
+      var vec3 = Vector(0, 0).minLength(1);
+    }).to.throw(TypeError);
+  });
 });
 
 describe('utility methods', function () {
