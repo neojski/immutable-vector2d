@@ -54,13 +54,19 @@ Vector.prototype.length = function () {
   return Math.sqrt(this.lengthSq());
 };
 
-Vector.prototype.normalize = function () {
+/**
+ * Returns a vector of the same direction but with a length of 1, or the given length.
+ * @param  {number} [scalar=1] Length of returned vector.
+ * @return {Vector}
+ */
+Vector.prototype.normalize = function (scalar) {
   var length = this.length();
+  scalar = scalar || 1;
 
   if (length === 0) {
     throw new TypeError('Vector has length 0. Cannot normalize().');
   }
-  return this.divide(length);
+  return this.divide(length).multiply(scalar);
 };
 
 Vector.prototype.mix = function (vec, amount) {
@@ -79,6 +85,18 @@ Vector.prototype.snap = function (snapTo) {
     return Math.round(val / snapTo) * snapTo;
   };
   return new Vector(snap(this.x), snap(this.y));
+}
+
+/**
+ * Expand this vector to a given minimum length in the same direction as the original.
+ *
+ * Not valid on zero-length vectors.
+ *
+ * @param  {number} scalar Minimum length
+ * @return {Vector}
+ */
+Vector.prototype.minLength = function (scalar) {
+  return this.length() < scalar ? this.normalize(scalar) : this;
 }
 
 Vector.prototype.clone = function () {

@@ -121,6 +121,11 @@ describe('chainable instance methods', function () {
     expect(vec3.length()).to.be.within(1 - EPSILON, 1 + EPSILON);
   });
 
+  it('should normalize a vector to a given length', function () {
+    var vec3 = vec1.normalize(5);
+    expect(vec3.length()).to.be.within(5 - EPSILON, 5 + EPSILON);
+  });
+
   it('should throw when normalizing zero vector', function () {
     expect(function () {
       var vec3 = Vector(0, 0).normalize();
@@ -208,6 +213,22 @@ describe('chainable instance methods', function () {
   it('should snap negative vectors to the nearest multiple of a given value', function () {
     var res = new Vector(-2, -6).snap(5);
     expect(res).to.deep.equal(new Vector(-0, -5));
+  });
+
+  it('should expand vectors that are too short', function () {
+    var res = new Vector(1, 0).minLength(5);
+    expect(res).to.deep.equal(new Vector(5, 0));
+  });
+
+  it('should only expand vectors that are too short', function () {
+    var res = new Vector(10, 0).minLength(5);
+    expect(res).to.deep.equal(new Vector(10, 0));
+  });
+
+  it('should throw when expanding a zero-length vector', function () {
+    expect(function () {
+      var vec3 = Vector(0, 0).minLength(1);
+    }).to.throw(TypeError);
   });
 });
 
