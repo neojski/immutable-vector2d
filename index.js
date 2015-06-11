@@ -23,6 +23,22 @@ Vector.fromObject = function (obj) {
   return new Vector(obj.x, obj.y);
 };
 
+Vector.fromString = function (str) {
+  // e.g.  'x:100, y:200'
+  var array = str
+    .split(', ')
+    .map(function (s) {
+      return s.substring(2);
+    })
+    .map(parseFloat);
+
+  if (array.some(isNaN)) {
+    throw new TypeError('"' + str + '" is not a valid Vector string.');
+  }
+
+  return Vector.fromArray(array);
+};
+
 Vector.prototype.add = function (vec) {
   return new Vector(this.x + vec.x, this.y + vec.y);
 };
