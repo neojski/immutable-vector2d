@@ -65,6 +65,35 @@ describe('static methods', function () {
     });
   });
 
+  describe('#fromString()', function () {
+    var originalVec, vec;
+
+    before(function () {
+      originalVec = new Vector(0.5, 10);
+      vec = Vector.fromString(originalVec.toString());
+    });
+
+    it('should return an instance of Vector', function () {
+      expect(vec).to.be.an.instanceof(Vector);
+    });
+
+    it('should have axis from string', function () {
+      expect(vec).to.deep.equal(originalVec);
+    });
+
+    it('should throw when given an invalid string', function () {
+      expect(function () {
+        Vector.fromString('Vector(100, 200)');
+      }).to.throw(TypeError);
+    });
+
+    it('should throw when given a non-string object', function () {
+      expect(function () {
+        Vector.fromString([100, 200]);
+      }).to.throw(TypeError);
+    });
+  });
+
 });
 
 describe('chainable instance methods', function () {
