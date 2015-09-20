@@ -101,7 +101,7 @@ Vector.prototype.snap = function (snapTo) {
     return Math.round(val / snapTo) * snapTo;
   };
   return new Vector(snap(this.x), snap(this.y));
-}
+};
 
 /**
  * Expand this vector to a given minimum length in the same direction as the original.
@@ -113,7 +113,17 @@ Vector.prototype.snap = function (snapTo) {
  */
 Vector.prototype.minLength = function (scalar) {
   return this.length() < scalar ? this.normalize(scalar) : this;
-}
+};
+
+/**
+ * Reduce this vector to a given maximum length in the same direction as the original.
+ *
+ * @param  {number} scalar Maximum length
+ * @return {Vector}
+ */
+Vector.prototype.maxLength = function (scalar) {
+  return this.length() > scalar ? this.normalize(scalar) : this;
+};
 
 Vector.prototype.clone = function () {
   return new Vector(this.x, this.y);

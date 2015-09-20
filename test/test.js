@@ -259,6 +259,21 @@ describe('chainable instance methods', function () {
       var vec3 = Vector(0, 0).minLength(1);
     }).to.throw(TypeError);
   });
+
+  it('should reduce vectors that are too long', function () {
+    var res = new Vector(6, 0).maxLength(5);
+    expect(res).to.deep.equal(new Vector(5, 0));
+  });
+
+  it('should only reduce vectors that are too long', function () {
+    var res = new Vector(2, 0).maxLength(5);
+    expect(res).to.deep.equal(new Vector(2, 0));
+  });
+
+  it('should successfully reduce a zero-length vector', function () {
+    var res = new Vector(0, 0);
+    expect(res).to.deep.equal(new Vector(0, 0));
+  });
 });
 
 describe('utility methods', function () {
