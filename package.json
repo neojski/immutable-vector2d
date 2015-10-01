@@ -8,6 +8,7 @@
     "coordinates",
     "immutable"
   ],
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/neojski/immutable-vector2d"
