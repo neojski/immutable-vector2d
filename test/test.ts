@@ -1,17 +1,18 @@
-var expect = require("chai").expect;
-var Vector = require("../index");
+import { expect } from "chai";
+import Vector from "../src/index";
+import { VectorLike } from "../src/index";
 
 var EPSILON = 0.00000001;
 
 describe("static methods", function() {
   describe("new Vector", function() {
-    var x, y, vec1, vec2;
+    var x: number, y: number, vec1: Vector, vec2: Vector;
 
     before(function() {
       x = 100;
       y = 200;
       vec1 = new Vector(x, y);
-      vec2 = Vector(x, y);
+      vec2 = new Vector(x, y);
     });
 
     it("should be an instance of Vector", function() {
@@ -29,7 +30,7 @@ describe("static methods", function() {
   });
 
   describe("#fromArray()", function() {
-    var arr, vec;
+    var arr: number[], vec: Vector;
 
     before(function() {
       arr = [100, 200];
@@ -47,7 +48,7 @@ describe("static methods", function() {
   });
 
   describe("#fromObject()", function() {
-    var obj, vec;
+    var obj: VectorLike, vec: Vector;
 
     before(function() {
       obj = { x: 100, y: 200 };
@@ -65,8 +66,7 @@ describe("static methods", function() {
   });
 
   describe("#fromString()", function() {
-    var originalVec, vec;
-
+    var originalVec: Vector, vec: Vector;
     before(function() {
       originalVec = new Vector(0.5, 10);
       vec = Vector.fromString(originalVec.toString());
@@ -85,17 +85,11 @@ describe("static methods", function() {
         Vector.fromString("Vector(100, 200)");
       }).to.throw(TypeError);
     });
-
-    it("should throw when given a non-string object", function() {
-      expect(function() {
-        Vector.fromString([100, 200]);
-      }).to.throw(TypeError);
-    });
   });
 });
 
 describe("chainable instance methods", function() {
-  var vec1, vec2;
+  var vec1: Vector, vec2: Vector;
 
   before(function() {
     vec1 = new Vector(2, 6);
@@ -155,7 +149,7 @@ describe("chainable instance methods", function() {
 
   it("should throw when normalizing zero vector", function() {
     expect(function() {
-      var vec3 = Vector(0, 0).normalize();
+      var vec3 = new Vector(0, 0).normalize();
     }).to.throw(TypeError);
   });
 
@@ -170,17 +164,17 @@ describe("chainable instance methods", function() {
   });
 
   it("should project onto a vector", function() {
-    var vec3 = vec2.projectOnto(Vector(7, 0));
-    expect(vec3).to.deep.equal(Vector(3, 0));
+    var vec3 = vec2.projectOnto(new Vector(7, 0));
+    expect(vec3).to.deep.equal(new Vector(3, 0));
   });
 
   it("should project onto a vector (2)", function() {
-    var vec3 = vec1.projectOnto(Vector(1, 1));
-    expect(vec3).to.deep.equal(Vector(4, 4));
+    var vec3 = vec1.projectOnto(new Vector(1, 1));
+    expect(vec3).to.deep.equal(new Vector(4, 4));
   });
 
   it("should calculate the angle", function() {
-    function check(vector, expectedAngle) {
+    function check(vector: Vector, expectedAngle: number) {
       var angle = vector.angle();
       if (angle < 0) {
         angle += 2 * Math.PI;
@@ -190,14 +184,14 @@ describe("chainable instance methods", function() {
         expectedAngle + EPSILON
       );
     }
-    check(Vector(1, 1), (1 * Math.PI) / 4);
-    check(Vector(-1, 1), (3 * Math.PI) / 4);
-    check(Vector(-1, -1), (5 * Math.PI) / 4);
-    check(Vector(1, -1), (7 * Math.PI) / 4);
+    check(new Vector(1, 1), (1 * Math.PI) / 4);
+    check(new Vector(-1, 1), (3 * Math.PI) / 4);
+    check(new Vector(-1, -1), (5 * Math.PI) / 4);
+    check(new Vector(1, -1), (7 * Math.PI) / 4);
   });
 
   it("should calculate the angle", function() {
-    function check(vector, expectedAngle) {
+    function check(vector: Vector, expectedAngle: number) {
       var angle = vector.angleDeg();
       if (angle < 0) {
         angle += 360;
@@ -207,10 +201,10 @@ describe("chainable instance methods", function() {
         expectedAngle + EPSILON
       );
     }
-    check(Vector(1, 1), 45);
-    check(Vector(-1, 1), 135);
-    check(Vector(-1, -1), 225);
-    check(Vector(1, -1), 315);
+    check(new Vector(1, 1), 45);
+    check(new Vector(-1, 1), 135);
+    check(new Vector(-1, -1), 225);
+    check(new Vector(1, -1), 315);
   });
 
   it("should calculate the slope", function() {
@@ -260,7 +254,7 @@ describe("chainable instance methods", function() {
 
   it("should throw when expanding a zero-length vector", function() {
     expect(function() {
-      var vec3 = Vector(0, 0).minLength(1);
+      var vec3 = new Vector(0, 0).minLength(1);
     }).to.throw(TypeError);
   });
 
