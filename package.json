@@ -1,6 +1,6 @@
 {
   "name": "immutable-vector2d",
-  "version": "0.0.9",
+  "version": "1.0.0",
   "main": "index.js",
   "description": "Vector library based on https://github.com/maxkueng/victor but with immutable vectors",
   "keywords": [
@@ -18,8 +18,8 @@
   },
   "homepage": "https://github.com/neojski/immutable-vector2d",
   "devDependencies": {
-    "chai": "^2.3.0",
-    "mocha": "^2.2.4"
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0"
   },
   "scripts": {
     "test": "mocha -u tdd --reporter spec"
